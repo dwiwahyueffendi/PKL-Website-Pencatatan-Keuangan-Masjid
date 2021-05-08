@@ -1,9 +1,12 @@
 <?php
+    function koneksi(){
+        $host = 'localhost';
+        $nama = 'root';
+        $pass = '';
+        $db = 'db_keuangan';
 
-$host = 'localhost';
-$nama = 'root';
-$pass = '';
-$db = 'keuangan';
-
-$koneksi = mysqli_connect($host, $nama,$pass, $db);
+        $koneksi = mysqli_connect($host, $nama,$pass, $db);
+        mysqli_select_db($koneksi,$db);
+        return $koneksi;
+    }
 ?>
