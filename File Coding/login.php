@@ -1,3 +1,43 @@
+<?php
+    //Memulai session
+    session_start();
+
+    //Cek apakah user sudah login atau belum
+    if(isset($_SESSION['login']))
+    {
+        header("Location: index.php");
+        exit;
+    }
+
+    include "proses-data.php";
+    if(isset($_POST['login']))
+    {
+        $username = $_POST['login_username'];
+        $password = $_POST['login_password'];
+
+        $result = mysqli_query($conn, "SELECT * FROM tbl_akun WHERE username='$username'");
+
+        //Cek username dari database
+        if(mysqli_num_rows($result) === 1)
+        {
+            //Cek kecocokan password
+            $row = mysqli_fetch_assoc($result);
+            if(password_verify($password, $row["password"]))
+            {
+                //Set session login menjadi true
+                $_SESSION['username'] = $username;
+                $_SESSION['login'] = true;
+
+                //Melempar user ke halaman lain
+                header("Location: index.php");
+                exit;
+            }
+        }
+
+        $error = true;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,29 +60,22 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
-                                        <form>
+                                        <form method="POST">
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" />
+                                                <label class="small mb-1" for="login_username">Username</label>
+                                                <input class="form-control py-4" name="login_username" type="text" placeholder="Masukkan username yang telah terdaftar" required />
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputPassword">Password</label>
-                                                <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" />
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
-                                                    <label class="custom-control-label" for="rememberPasswordCheck">Remember password</label>
-                                                </div>
+                                                <label class="small mb-1" for="login_password">Password</label>
+                                                <input class="form-control py-4" name="login_password" type="password" placeholder="Masukkan password" />
                                             </div>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.html">Forgot Password?</a>
-                                                <a class="btn btn-primary" href="index.html">Login</a>
+                                                <button class="btn btn-primary btn-block" type="submit" name="login">LOGIN</button>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="register.php">Need an account? Sign up!</a></div>
+                                        <div class="small">Belum punya akun? <a href="register.php">Silahkan daftar di sini!</a></div>
                                     </div>
                                 </div>
                             </div>
