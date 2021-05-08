@@ -1,3 +1,30 @@
+<?php
+    //Memulai session
+    session_start();
+
+    //Cek apakah user sudah login atau belum
+    if(isset($_SESSION['login']))
+    {
+        header("Location: userArt.php");
+        exit;
+    }
+
+    require 'proses-data.php';
+    if( isset($_POST['daftar_akun']) )
+    {
+        if( registrasi($_POST) > 0 )
+        {
+            echo "<script>
+                    alert('Anda berhasil Mendaftar!');
+                  </script>";
+        }
+        else
+        {
+            echo mysqli_error($conn);
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -5,7 +32,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>Daftar | Pencatatan Keuangan</title>
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/login-register.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-primary">
@@ -21,19 +48,19 @@
                                         <form method="POST">
                                             <div class="form-group">
                                                 <label class="small mb-1" for="daftar_username">Username</label>
-                                                <input class="form-control py-4" id="daftar_username" type="text" placeholder="Masukkan username yang diinginkan..." required/>
+                                                <input class="form-control py-4" name="daftar_username" type="text" placeholder="Masukkan username yang diinginkan..." required/>
                                             </div>
-                                            <div class="form-row">
+                                            <div action="" class="form-row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="daftar_password">Password</label>
-                                                        <input class="form-control py-4" id="daftar_password" type="password" placeholder="Masukkan password" required/>
+                                                        <input class="form-control py-4" name="daftar_password" type="password" placeholder="Masukkan password" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="daftar_konfirmpassword">Konfirmasi Password</label>
-                                                        <input class="form-control py-4" id="daftar_konfirmpassword" type="password" placeholder="Masukkan konfirmasi password" required/>
+                                                        <input class="form-control py-4" name="daftar_konfirmpassword" type="password" placeholder="Masukkan konfirmasi password" required/>
                                                     </div>
                                                 </div>
                                             </div>
