@@ -9,7 +9,7 @@
         exit;
     }
 
-    require 'proses-data.php';
+    require 'proses-akun.php';
     if( isset($_POST['daftar_akun']) )
     {
         if( registrasi($_POST) > 0 )
