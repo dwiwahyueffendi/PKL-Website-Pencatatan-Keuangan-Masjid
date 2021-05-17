@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2021 at 11:49 AM
+-- Generation Time: May 17, 2021 at 05:04 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.5
 
@@ -38,6 +38,13 @@ CREATE TABLE `keuangan` (
   `berkas_image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `keuangan`
+--
+
+INSERT INTO `keuangan` (`id_keuangan`, `id_admin`, `tipe_organisasi`, `tipe_pencatatan`, `tanggal`, `keterangan`, `nominal`, `berkas_image`) VALUES
+('12333334', '111', 'Tamir', 'Pengeluaran', '2021-05-13', '111111111', '1111111111', '11111111111111111');
+
 -- --------------------------------------------------------
 
 --
@@ -51,6 +58,13 @@ CREATE TABLE `login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`id_admin`, `username`, `password`) VALUES
+('111', 'wahyu', '123456');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -58,6 +72,7 @@ CREATE TABLE `login` (
 -- Indexes for table `keuangan`
 --
 ALTER TABLE `keuangan`
+  ADD PRIMARY KEY (`id_keuangan`),
   ADD KEY `id_admin` (`id_admin`);
 
 --

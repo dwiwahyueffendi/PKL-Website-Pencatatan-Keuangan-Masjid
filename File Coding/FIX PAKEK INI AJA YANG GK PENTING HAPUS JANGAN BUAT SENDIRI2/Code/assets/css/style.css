@@ -1,0 +1,62 @@
+body {
+    height: 100%;
+    font-family: sans-serif;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.h2{
+    margin: 30px 0 30px 0;
+}
+
+.sidebar {
+    position: fixed;
+    z-index: 100;
+    padding: 48px 0 0;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+  
+.sidebar-sticky {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.sidebar-sticky ul li{
+    font-family: sans-serif;
+}
+
+.table-responsive td th{
+    font-family: sans-serif;    
+}
+
+.table-responsive tr td{
+    font-family: sans-serif;
+}
+
+[role="main"] {
+    padding-top: 50px;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #FFA500;
+ }
+ 
+table tr th{
+    text-align: center;;
+}
+
+th,
+td {
+    text-align: center;
+    padding: 16px;
+}
+
+th {
+    background-color:#FFA500;
+    color: white;
+    text-align: center;
+}
