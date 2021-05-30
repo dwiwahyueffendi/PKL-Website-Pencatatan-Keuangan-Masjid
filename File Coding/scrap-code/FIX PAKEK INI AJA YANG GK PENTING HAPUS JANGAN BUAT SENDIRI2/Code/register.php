@@ -5,7 +5,7 @@
     //Cek apakah user sudah login atau belum
     if(isset($_SESSION['login']))
     {
-        header("Location: index.php");
+        header("Location: userArt.php");
         exit;
     }
 

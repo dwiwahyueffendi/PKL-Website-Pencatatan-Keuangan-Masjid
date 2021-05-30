@@ -3,7 +3,7 @@
         $host = 'localhost';
         $nama = 'root';
         $pass = '';
-        $db = 'db_masjid';
+        $db = 'db_keuangan';
 
         $koneksi = mysqli_connect($host, $nama,$pass, $db);
         mysqli_select_db($koneksi,$db);

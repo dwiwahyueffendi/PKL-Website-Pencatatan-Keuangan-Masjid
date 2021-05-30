@@ -14,6 +14,9 @@
         <link rel="shortcut icon" href="assets/img/logoMasjid.png">
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
     </head>
 
     <body>
@@ -42,6 +45,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link btn-outline-dark active" href="<?php echo "filter.php"; ?>">Filter Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-outline-dark active" href="<?php echo "logout.php"; ?>"><span class="material-icons" style="font-size: 14px;">logout</span> Log Out</a>
                 </li>
             </ul>
           </div>
