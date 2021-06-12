@@ -16,7 +16,6 @@
     <head>
         <title>Sorting Pencatatan - Masjid Al Ikhlas</title>
         <meta charset="UTF-8">
-        <meta name="author" content="Dwi Wahyu Effendi">
         <link rel="shortcut icon" href="assets/img/LOGO.png">
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -88,15 +87,17 @@
             <tbody>
 
             <?php 
-            if(isset($_GET['filter_pencatatan'])){
-                $min = $_GET['min_harga'];
-                $max = $_GET['max_harga'];
-                $query = "SELECT * FROM tbl_keuangan WHERE nominal BETWEEN $min AND $max ORDER BY nominal ASC";
-                $filter = mysqli_query($conn, $query);			
-            }else{
-                $filter = mysqli_query($conn,"SELECT * FROM tbl_keuangan");	
+            if(isset($_GET["TA'AMIR"])){
+                $taamir_query = "SELECT * FROM tbl_keuangan WHERE tipe_organisasi = 'TA'AMIR' ORDER BY tipe_organisasi ASC";
+                $taamir = mysqli_query($conn, $taamir_query);			
             }
-            while($row = mysqli_fetch_array($filter)){
+
+            if(isset($_GET["TPQ"])){
+                $tpq_query = "SELECT * FROM tbl_keuangan WHERE tipe_organisasi = 'TPQ' ORDER BY tipe_organisasi ASC";
+                $tpq = mysqli_query($conn, $tpq_query);			
+            }
+
+            if($row = mysqli_fetch_array($taamir)){
             ?>
             <tr>
                 <td><?php echo $row['tanggal'];  ?></td>
@@ -112,7 +113,24 @@
                     <a href="<?php echo "hapus-pencatatan.php?id_keuangan=".$row['id_keuangan']; ?>" class="btn navbar-dark btn-danger btn-sm"> Hapus</a>
                 </td>
             </tr>
-            <?php } ?>
+
+            <?php
+            } else ($row = mysqli_fetch_array($tpq))
+            ?>
+            <tr>
+                <td><?php echo $row['tanggal'];  ?></td>
+                <td><?php echo $row['tipe_organisasi'];  ?></td>
+                <td><?php echo $row['tipe_pencatatan'];  ?></td>
+                <td><?php echo $row['keterangan'];  ?></td>
+                <td><?php echo $row['nominal'];  ?></td>
+                <td class="hide-print">
+                    <a href="berkas/<?php echo $row['berkas']; ?>" class="btn navbar-dark btn-primary btn-sm"> Tampilkan Berkas</a>
+                </td>
+                <td class="hide-print">
+                    <a href="<?php echo "ubah-pencatatan.php?id_keuangan=".$row['id_keuangan']; ?>" class="btn navbar-dark btn-warning btn-sm"> Ubah</a>
+                    <a href="<?php echo "hapus-pencatatan.php?id_keuangan=".$row['id_keuangan']; ?>" class="btn navbar-dark btn-danger btn-sm"> Hapus</a>
+                </td>
+            </tr>
             <br>
             </tbody>
             </table>
