@@ -16,7 +16,8 @@
     <head>
         <title>Sorting Pencatatan - Masjid Al Ikhlas</title>
         <meta charset="UTF-8">
-        <link rel="shortcut icon" href="assets/img/LOGO.png">
+        <meta name="author" content="Dwi Wahyu Effendi">
+        <link rel="shortcut icon" href="assets/img/logoMasjid.png">
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -35,7 +36,7 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column" style="margin-top:60px;">
                 <li class="nav-item">
-                    <a class="nav-link btn-outline-dark active" href="<?php echo "index.php"; ?>">Daftar Pencatatan</a>
+                    <a class="nav-link btn-outline-dark active" href="<?php echo "admin.php"; ?>">Daftar Pencatatan</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link btn-outline-dark active" href="<?php echo "tambah-pencatatan.php"; ?>">Tambah Pencatatan</a>
@@ -60,14 +61,22 @@
     <h2></h2>
           <div class="table-responsive">
             <div>
-                <form class="form-inline" action="filter.php" method="GET">
-                    <div class="form-group col-md-4">
+                <form class="form-inline" method="GET">
+                    <div class="form-group col-md-12">
                         <label style="margin-right: 5px;">Berdasarkan</label>
-                        <select class="form-control">
-                            <option value="tanggal">Pilih Salah Satu</option>
-                            <option value="TA`AMIR">Ta`amir</option>
-                            <option value="TPQ">TPQ</option>
+                        <select class="form-control" name="pilihan_sort" required>
+                            <option value="">Pilih Salah Satu</option>
+                            <option value="tanggal">Tanggal</option>
+                            <option value="organisasi">Organisasi</option>
+                            <option value="nominal">Nominal</option>
                         </select>
+                        <label style="margin-right: 5px;"> 	&nbsp; 	&nbsp; Urutan</label>
+                        <select class="form-control" name="urutan_sort" required>
+                            <option value="">Pilih Salah Satu</option>
+                            <option value="terbesar">Terbesar ke Terkecil</option>
+                            <option value="terkecil">Terkecil ke Terbesar</option>
+                        </select>
+                        <button type="submit" name="sorting_pencatatan" class="btn btn-success">Urutkan</button>
                     </div>
                 </form>
             </div>
@@ -87,17 +96,54 @@
             <tbody>
 
             <?php 
-            if(isset($_GET["TA'AMIR"])){
-                $taamir_query = "SELECT * FROM tbl_keuangan WHERE tipe_organisasi = 'TA'AMIR' ORDER BY tipe_organisasi ASC";
-                $taamir = mysqli_query($conn, $taamir_query);			
-            }
+            if(isset($_GET['sorting_pencatatan'])){
+                $pilihan = $_GET['pilihan_sort'];
+                $urutan = $_GET['urutan_sort'];
 
-            if(isset($_GET["TPQ"])){
-                $tpq_query = "SELECT * FROM tbl_keuangan WHERE tipe_organisasi = 'TPQ' ORDER BY tipe_organisasi ASC";
-                $tpq = mysqli_query($conn, $tpq_query);			
+                if($pilihan == "tanggal"){
+                    if($urutan == "terbesar")
+                    {
+                        $query = "SELECT * FROM tbl_keuangan ORDER BY tanggal DESC";
+                        $sort = mysqli_query($conn, $query); 
+                    }
+                    else if($urutan == "terkecil")
+                    {
+                        $query = "SELECT * FROM tbl_keuangan ORDER BY tanggal ASC";
+                        $sort = mysqli_query($conn, $query); 
+                    }		
+                }
+                else if($pilihan == "organisasi")
+                { 
+                    if($urutan == "terbesar")
+                    {
+                        $query = "SELECT * FROM tbl_keuangan ORDER BY tipe_organisasi DESC";
+                        $sort = mysqli_query($conn, $query);
+                    }
+                    else if($urutan == "terkecil")
+                    {
+                        $query = "SELECT * FROM tbl_keuangan ORDER BY tipe_organisasi ASC";
+                        $sort = mysqli_query($conn, $query);
+                    }	
+                }
+                else if($pilihan == "nominal")
+                {
+                    if($urutan == "terbesar")
+                    {
+                        $query = "SELECT * FROM tbl_keuangan ORDER BY nominal DESC";
+                        $sort = mysqli_query($conn, $query);
+                    }
+                    else if($urutan == "terkecil")
+                    {
+                        $query = "SELECT * FROM tbl_keuangan ORDER BY nominal ASC";
+                        $sort = mysqli_query($conn, $query);
+                    }		
+                }	
             }
-
-            if($row = mysqli_fetch_array($taamir)){
+            else
+            {
+                $sort = mysqli_query($conn,"SELECT * FROM tbl_keuangan");	
+            }
+            while($row = mysqli_fetch_array($sort)){
             ?>
             <tr>
                 <td><?php echo $row['tanggal'];  ?></td>
@@ -113,24 +159,7 @@
                     <a href="<?php echo "hapus-pencatatan.php?id_keuangan=".$row['id_keuangan']; ?>" class="btn navbar-dark btn-danger btn-sm"> Hapus</a>
                 </td>
             </tr>
-
-            <?php
-            } else ($row = mysqli_fetch_array($tpq))
-            ?>
-            <tr>
-                <td><?php echo $row['tanggal'];  ?></td>
-                <td><?php echo $row['tipe_organisasi'];  ?></td>
-                <td><?php echo $row['tipe_pencatatan'];  ?></td>
-                <td><?php echo $row['keterangan'];  ?></td>
-                <td><?php echo $row['nominal'];  ?></td>
-                <td class="hide-print">
-                    <a href="berkas/<?php echo $row['berkas']; ?>" class="btn navbar-dark btn-primary btn-sm"> Tampilkan Berkas</a>
-                </td>
-                <td class="hide-print">
-                    <a href="<?php echo "ubah-pencatatan.php?id_keuangan=".$row['id_keuangan']; ?>" class="btn navbar-dark btn-warning btn-sm"> Ubah</a>
-                    <a href="<?php echo "hapus-pencatatan.php?id_keuangan=".$row['id_keuangan']; ?>" class="btn navbar-dark btn-danger btn-sm"> Hapus</a>
-                </td>
-            </tr>
+            <?php } ?>
             <br>
             </tbody>
             </table>

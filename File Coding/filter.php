@@ -17,7 +17,7 @@
         <title>Filter Pencatatan - Masjid Al Ikhlas</title>
         <meta charset="UTF-8">
         <meta name="author" content="Dwi Wahyu Effendi">
-        <link rel="shortcut icon" href="assets/img/LOGO.png">
+        <link rel="shortcut icon" href="assets/img/logoMasjid.png">
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -36,7 +36,7 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column" style="margin-top:60px;">
                 <li class="nav-item">
-                    <a class="nav-link btn-outline-dark active" href="<?php echo "index.php"; ?>">Daftar Pencatatan</a>
+                    <a class="nav-link btn-outline-dark active" href="<?php echo "admin.php"; ?>">Daftar Pencatatan</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link btn-outline-dark active" href="<?php echo "tambah-pencatatan.php"; ?>">Tambah Pencatatan</a>

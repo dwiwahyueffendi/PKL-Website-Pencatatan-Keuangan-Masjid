@@ -1,5 +1,19 @@
 # **PKL-Website-Kelurahan**
 
+## **Progress 14-Juni-2021** -Rehant 
+----------
+
+### **1. Program siap untuk diajukan kepada dosen pembimbing**
+Program website sudah siap untuk diajukan kepada dosen pembimbing guna untuk penyelesaian mata kuliah praktek kerja lapangan
+
+### **2. Pembetulan dan pembaruan kode sumber**
+- [NEW] admin.php
+- [NEW] about.php
+- [NEW] data.php
+- [FIX] sorting.php
+- [FIX] login.php
+- [FIX] index.php
+
 ## **Progress 30-Mei-2021** -Rehant 
 ----------
 

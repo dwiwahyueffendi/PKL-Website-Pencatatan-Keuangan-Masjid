@@ -5,10 +5,11 @@
     //Cek apakah user sudah login atau belum
     if(isset($_SESSION['login']))
     {
-        header("Location: index.php");
+        header("Location: admin.php");
         exit;
     }
-
+    $error = false;
+    
     include "proses-akun.php";
     if(isset($_POST['login']))
     {
@@ -29,7 +30,7 @@
                 $_SESSION['login'] = true;
 
                 //Melempar user ke halaman lain
-                header("Location: index.php");
+                header("Location: admin.php");
                 exit;
             }
         }
@@ -68,6 +69,12 @@
                                             <div class="form-group">
                                                 <label class="small mb-1" for="login_password">Password</label>
                                                 <input class="form-control py-4" name="login_password" type="password" placeholder="Masukkan password" required/>
+                                                <?php
+                                                    if($error)
+                                                    {
+                                                        echo "<p style='color:red; margin-top:10px'>Username atau password salah!</p>";
+                                                    }
+                                                ?>
                                             </div>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <button class="btn btn-success btn-block" type="submit" name="login">LOGIN</button>
