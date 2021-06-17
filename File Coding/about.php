@@ -81,6 +81,27 @@
               </ul>
             </div>
           </div>
+
+          <div class="col-lg-4">
+            <div class="tm-bg-black-transparent tm-about-box">
+              <div class="tm-about-number-container"></div>              
+              <h3 class="tm-about-name">Struktur Organisasi Kepengurusan TPQ</h3>
+              <ul>
+              <li>Pelindung / Penasehat :  H.Bambang Irawanto, Ust. Akhiru David  </li>
+              <li>Ketua I : Ust. A. Syuhud Chusen </li>
+              <li>Ketua II : Ust. Moch. Nuh </li>
+              <li>Seksi Pendidikan  : Ust. Amirul Mukmin </li>
+              <li>Sekretaris I : Ust. Fathur Roziq </li>
+              <li>Bendahara I : Ustd. Hj. Mahsusatin </li>
+              <li>Sekretaris II : Ustd. Suryanita Setyarosana </li>
+              <li>Bendahara II : Ust. M. Khoiri </li>
+              <li>Bidang Kesantrian : Ust. Imam Safi’i </li>
+              <li>Bidang Akademik : Ust. Abdullah Mas’ud </li>
+              <li>Koperasi : Ust. Ade Depyansyawardana </li>
+              <li>Staff Guru Pengajar TPA / TPQ : Ust. A. Syuhud Chusen, Ust. Amirul Mukmin, Ust. Moch. Nuh, Ust. M. Khoiri, Ust. Imam Safi’i, Ust. Moch. Mustaqim, Ust. Fathur Roziq, Ust. Abdullah Mas’ud, Ust. Ade Depyansyawardana, Ustd. Hj. Mahsusatin, Ustd. Yuyun Kholidah, Ustd. Nikmah, Ustd. Nuryah, Ustd. Asri Suwaniati, Ustd. Suryanita Setyarosana </li>
+              </ul>
+            </div>
+          </div>
         </section>
 
         <!-- Footer-->
