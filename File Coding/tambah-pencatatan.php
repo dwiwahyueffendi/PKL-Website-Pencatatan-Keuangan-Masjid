@@ -50,7 +50,10 @@
                     <a class="nav-link btn-outline-dark active" href="<?php echo "filter.php"; ?>">Filter Pencatatan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn-outline-dark active" href="<?php echo "logout.php"; ?>"><span class="material-icons" style="font-size: 14px;">logout</span> Log Out</a>
+                    <a class="nav-link btn-outline-dark active" href="<?php echo "register.php"; ?>">Daftar Admin Baru</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-outline-dark active" href="<?php echo "register.php"; ?>"><span class="material-icons" style="font-size: 14px;">logout</span> Log Out</a>
                 </li>
             </ul>
           </div>

@@ -81,9 +81,6 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="card-footer text-center">
-                                        <div class="small">Belum punya akun? <a href="register.php">Silahkan daftar di sini!</a></div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

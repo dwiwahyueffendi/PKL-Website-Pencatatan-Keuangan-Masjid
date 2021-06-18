@@ -43,7 +43,7 @@
           //Jika gambar berkas gagal dihapus
           $status = 'error';
         }
-        header('Location: index.php?status='.$status);
+        header('Location: admin.php?status='.$status);
       }  
   }
 ?>

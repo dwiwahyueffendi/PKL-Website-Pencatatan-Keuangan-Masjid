@@ -7,7 +7,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Admin - Masjid Al Ikhlas</title>
+        <title>Data Keuangan - Masjid Al Ikhlas</title>
         <meta charset="UTF-8">
         <meta name="author" content="Dwi Wahyu Effendi">
         <link rel="shortcut icon" href="assets/img/logoMasjid.png">
