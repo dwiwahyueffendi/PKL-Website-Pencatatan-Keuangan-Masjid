@@ -116,13 +116,13 @@
         if(mysqli_query($conn,$query))
         {
             $status = 'ok';
-            header('Location: index.php?status='.$status);
+            header('Location: admin.php?status='.$status);
         }
         else
         {
             echo mysqli_error($conn);
             $status = 'error';
-            header('Location: index.php?status='.$status);
+            header('Location: admin.php?status='.$status);
         }
     }
     
